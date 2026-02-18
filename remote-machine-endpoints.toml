@@ -1,0 +1,21 @@
+# Remote machine endpoints: machine_id -> OpenAI-compatible base URL.
+#
+# Published from llm-api-proxy (make publish-remote-endpoints). This file is the
+# public canonical store for dynamic ngrok URLs so other machines or CI can
+# fetch it (make fetch-remote-endpoints in llm-api-proxy or use
+# REMOTE_MACHINE_ENDPOINTS_URL to read from this repo's raw URL).
+#
+# Use this mapping so other nodes know how to connect to the LM Studio (or other)
+# API exposed from a given machine (e.g. via ngrok). Key = machine identifier;
+# value = base URL including /v1 for the OpenAI-compatible API.
+#
+# Dynamic URL: base_url is updated by llm-api-proxy when ngrok restarts (on the
+# machine where ngrok runs). Set resolve_from_local_ngrok = true for a machine
+# that runs ngrok so the URL is resolved from the local ngrok API (127.0.0.1:4040)
+# when the proxy runs on that machine.
+
+[dell_5520]
+# Dell Latitude 5520 (16 GB RAM, CPU-only). LM Studio Local Server exposed via ngrok.
+resolve_from_local_ngrok = true
+base_url = "https://d6db-45-62-187-73.ngrok-free.app/v1"
+description = "LM Studio on Dell 5520 (CPU-only), exposed via ngrok"
