@@ -1,21 +1,43 @@
 # Remote machine endpoints: machine_id -> OpenAI-compatible base URL.
 #
-# Published from llm-api-proxy (make publish-remote-endpoints). This file is the
-# public canonical store for dynamic ngrok URLs so other machines or CI can
-# fetch it (make fetch-remote-endpoints in llm-api-proxy or use
-# REMOTE_MACHINE_ENDPOINTS_URL to read from this repo's raw URL).
+# Source of truth for local edits; publish to the public endpoints repo so other
+# machines can use the same URLs: make publish-remote-endpoints.
+# Other machines: make fetch-remote-endpoints (or set REMOTE_MACHINE_ENDPOINTS_URL
+# to the public TOML URL to load directly).
 #
 # Use this mapping so other nodes know how to connect to the LM Studio (or other)
 # API exposed from a given machine (e.g. via ngrok). Key = machine identifier;
 # value = base URL including /v1 for the OpenAI-compatible API.
 #
-# Dynamic URL: base_url is updated by llm-api-proxy when ngrok restarts (on the
-# machine where ngrok runs). Set resolve_from_local_ngrok = true for a machine
-# that runs ngrok so the URL is resolved from the local ngrok API (127.0.0.1:4040)
-# when the proxy runs on that machine.
+# Ngrok universal gateway: if your tunnel uses a path prefix (e.g. Cloud Edge),
+# set base_url to the full URL including that path, e.g.:
+#   base_url = "https://your-domain.ngrok-free.app/your-edge-path/v1"
+#
+# Dynamic URL (no manual updates when tunnel changes):
+# - Set resolve_from_local_ngrok = true for a machine that runs ngrok (e.g. Dell 5520).
+#   Then when you run the proxy or make test-embedding-dell5520 ON THAT SAME MACHINE
+#   (where ngrok is running), the URL is read from the local ngrok API (127.0.0.1:4040),
+#   so it is always current. If you run the proxy on another machine, 127.0.0.1:4040
+#   is unreachable and the file's base_url is used — update base_url manually after
+#   ngrok restarts, or run the proxy on the machine where ngrok runs.
+# - Optionally: on the Dell, dotfiles script update-lmstudio-remote-url.sh runs after ngrok
+#   starts and can update this file's base_url so other machines (or a synced repo) get the
+#   latest URL; set REMOTE_MACHINE_ENDPOINTS_FILE to this file path when running the script.
+#
+# How to lookup URL manually: on the machine where ngrok runs, run:
+#   make show-ngrok-url-command   (prints the curl one-liner)
+# With a reserved/static domain (ngrok dashboard), the URL does not change on restart.
+#
+# Refs:
+#   - Dell 5520 spec & LM Studio: ../../dotfiles/docs/local-llm-dell-5520.md
+#   - Expose LM Studio via ngrok: ../../dotfiles/docs/lmstudio-models-agent16.md (Expose LM Studio via ngrok)
 
 [dell_5520]
 # Dell Latitude 5520 (16 GB RAM, CPU-only). LM Studio Local Server exposed via ngrok.
+# When resolve_from_local_ngrok = true, the proxy and make test-embedding-dell5520 resolve
+# the URL from the local ngrok API (127.0.0.1:4040) when run on this machine, so the URL
+# is always current even when the tunnel subdomain changes. base_url is used as fallback
+# when the API is unreachable (e.g. when calling from another machine).
 resolve_from_local_ngrok = true
-base_url = "https://d6db-45-62-187-73.ngrok-free.app/v1"
+base_url = "https://afa3-45-62-187-73.ngrok-free.app/v1"
 description = "LM Studio on Dell 5520 (CPU-only), exposed via ngrok"
