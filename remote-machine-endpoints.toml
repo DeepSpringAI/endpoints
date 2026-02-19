@@ -39,5 +39,5 @@
 # is always current even when the tunnel subdomain changes. base_url is used as fallback
 # when the API is unreachable (e.g. when calling from another machine).
 resolve_from_local_ngrok = true
-base_url = "https://94c4-45-62-187-73.ngrok-free.app/v1"
+base_url = "https://df98-45-62-187-73.ngrok-free.app/v1"
 description = "LM Studio on Dell 5520 (CPU-only), exposed via ngrok"
