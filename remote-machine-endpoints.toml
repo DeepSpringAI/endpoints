@@ -10,9 +10,4 @@
 #
 # Refs: dotfiles docs/tailscale-publish-endpoints-at-boot.md, docs/lmstudio-ngrok-remote.md
 
-["Linux|agent|agent|11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz|NVIDIA GeForce RTX 3050 Ti Laptop GPU (4096 MiB)"]
-base_url = "http://100.89.202.61:1234/v1"
-["Linux|agent16|agent|13th Gen Intel(R) Core(TM) i9-13950HX|NVIDIA GeForce RTX 4090 Laptop GPU (16376 MiB)"]
-base_url = "http://100.83.31.44:1234/v1"
-["Linux|agent-dell-cpu|agent|11th Gen Intel(R) Core(TM) i7-1185G7 @ 3.00GHz|02.0 VGA compatible controller: Intel Corporation TigerLake-LP GT2 [Iris Xe Graphics] (rev 01)"]
-base_url = "http://100.70.159.64:1234/v1"
+
