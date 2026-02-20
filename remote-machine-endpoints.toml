@@ -15,6 +15,8 @@
 base_url = "http://100.89.202.61:1234/v1"
 load_model = "qwen2.5-vl-3b-instruct"
 
+loaded_model = "Qwen2.5 VL 3B Instruct"
+loaded_model_key = "qwen2.5-vl-3b-instruct"
 ["Linux|agent16|agent|13th Gen Intel(R) Core(TM) i9-13950HX|NVIDIA GeForce RTX 4090 Laptop GPU (16376 MiB)"]
 base_url = "http://100.83.31.44:1234/v1"
 load_model = "qwen2.5-7b-instruct"
