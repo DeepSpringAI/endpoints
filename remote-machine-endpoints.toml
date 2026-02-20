@@ -31,3 +31,5 @@ description = "LM Studio on Dell 5520 (CPU-only), exposed via ngrok"
 base_url = "https://unliberated-nonlocalized-marshall.ngrok-free.dev/v1"
 ["Linux|agent-dell-cpu|agent|11th Gen Intel(R) Core(TM) i7-1185G7 @ 3.00GHz|02.0 VGA compatible controller: Intel Corporation TigerLake-LP GT2 [Iris Xe Graphics] (rev 01)"]
 base_url = "https://9b2b-45-62-187-75.ngrok-free.app/v1"
+["Linux|agent|agent|11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz|NVIDIA GeForce RTX 3050 Ti Laptop GPU (4096 MiB)"]
+base_url = "http://100.89.202.61:1234/v1"
