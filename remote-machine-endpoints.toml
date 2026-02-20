@@ -19,6 +19,8 @@ load_model = "qwen2.5-vl-3b-instruct"
 base_url = "http://100.83.31.44:1234/v1"
 load_model = "qwen2.5-7b-instruct"
 
+loaded_model = "Qwen2.5 7B Instruct"
+loaded_model_key = "qwen2.5-7b-instruct"
 ["Linux|agent-dell-cpu|agent|11th Gen Intel(R) Core(TM) i7-1185G7 @ 3.00GHz|02.0 VGA compatible controller: Intel Corporation TigerLake-LP GT2 [Iris Xe Graphics] (rev 01)"]
 base_url = "http://100.70.159.64:1234/v1"
 load_model = "text-embedding-embedding-gemma-300m"
