@@ -1,29 +1,16 @@
 # Remote machine endpoints: machine_id -> OpenAI-compatible base URL.
 #
+# Channel of communication: Tailscale only. Each machine publishes its Tailscale IP
+# (base_url = "http://<tailscale-ip>:1234/v1") via dotfiles tailscale-publish-endpoints
+# at boot. No ngrok is used for this repo.
+#
 # Section name = output of dotfiles/scripts/machine-user-id.sh (uname|hostname|user|cpu|gpu).
-# Same key as ~/.config/lmstudio-remote.toml. For lookup: run that script on the target machine
-# to get its key, then use that key in credentials (ngrok.remote_machine_id) and in
-# REMOTE_MACHINE_ID for make test-embedding-dell5520.
+# Same key as ~/.config/lmstudio-remote.toml. For lookup: run that script on the target
+# machine to get its key, then use that key in credentials and in REMOTE_MACHINE_ID.
 #
-# Source of truth for local edits; publish to the public endpoints repo so other
-# machines can use the same URLs: make publish-remote-endpoints.
-# Other machines: make fetch-remote-endpoints (or set REMOTE_MACHINE_ENDPOINTS_URL
-# to the public TOML URL to load directly).
-#
-# Ngrok universal gateway: if your tunnel uses a path prefix (e.g. Cloud Edge),
-# set base_url to the full URL including that path, e.g.:
-#   base_url = "https://your-domain.ngrok-free.app/your-edge-path/v1"
-#
-# Dynamic URL (no manual updates when tunnel changes):
-# - Set resolve_from_local_ngrok = true for a machine that runs ngrok.
-#   When you run the proxy or make test-embedding-dell5520 ON THAT SAME MACHINE,
-#   the URL is read from the local ngrok API (127.0.0.1:4040). From another machine,
-#   the file's base_url is used (or dotfiles update-lmstudio-remote-url.sh updates it).
-#
-# Refs: dotfiles docs/lmstudio-models-agent16.md, docs/lmstudio-ngrok-remote.md
+# Refs: dotfiles docs/tailscale-publish-endpoints-at-boot.md, docs/lmstudio-ngrok-remote.md
 
-# Dell 5520: ngrok tied to GitHub foundation-models. Section key from machine-user-id.sh on that machine.
 ["Linux|agent|agent|11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz|NVIDIA GeForce RTX 3050 Ti Laptop GPU (4096 MiB)"]
 base_url = "http://100.89.202.61:1234/v1"
 ["Linux|agent16|agent|13th Gen Intel(R) Core(TM) i9-13950HX|NVIDIA GeForce RTX 4090 Laptop GPU (16376 MiB)"]
-base_url = "https://unliberated-nonlocalized-marshall.ngrok-free.dev/v1"
+base_url = "http://100.83.31.44:1234/v1"
