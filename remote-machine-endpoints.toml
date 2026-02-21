@@ -25,4 +25,4 @@ load_model = "text-embedding-embedding-gemma-300m"
 
 ["Darwin|Hosseins-MacBook-Pro.local|Hossein.Akhlaghpour|Apple M3 Max|Apple M3 Max"]
 base_url = "http://100.112.238.94:1234/v1"
-load_model = "nanbeige4.1-3b"
+load_model = "openai/gpt-oss-20b"
