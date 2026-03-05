@@ -1,0 +1,46 @@
+# Model-type endpoints: embedding | llm | rerank | visual -> base_url (+ optional model).
+#
+# Keyed by *model type*, not by machine. Which machine serves each type is an
+# implementation detail; consumers ask for "embedding" or "llm" and get base_url.
+#
+# Sources: MODEL_TYPE_ENDPOINTS_FILE, or this file path from endpoints repo.
+# Tokens: ~/.config/lmstudio-model-keys.toml (model name -> API key); never in this file.
+#
+# Optional: base_urls = ["url1", "url2"] for fallback order; resolver probes and caches first working.
+
+[embedding]
+base_url = "http://100.70.159.64:1234/v1"
+model = "text-embedding-embedding-gemma-300m"
+
+[llm]
+# Primary; optional base_urls = ["url1", "url2"] for fallback order (resolver probes and caches first working)
+base_url = "http://100.83.31.44:1234/v1"
+model = "qwen2.5-7b-instruct"
+
+[rerank]
+# Example: same or different server
+# base_url = "http://100.70.159.64:1234/v1"
+# model = "rerank-model-name"
+
+[visual]
+base_url = "http://100.89.202.61:1234/v1"
+model = "qwen2.5-vl-3b-instruct"
+
+
+[embedding-1]
+base_url = "http://100.70.159.64:1234/v1"
+model = "text-embedding-embedding-gemma-300m"
+
+[llm-1]
+# Primary; optional base_urls = ["url1", "url2"] for fallback order (resolver probes and caches first working)
+base_url = "http://100.83.31.44:1234/v1"
+model = "qwen2.5-7b-instruct"
+
+[rerank-1]
+# Example: same or different server
+# base_url = "http://100.70.159.64:1234/v1"
+# model = "rerank-model-name"
+
+[visual-1]
+base_url = "http://100.89.202.61:1234/v1"
+model = "qwen2.5-vl-3b-instruct"
