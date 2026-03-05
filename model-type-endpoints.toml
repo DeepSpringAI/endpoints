@@ -1,26 +1,14 @@
-# Model-type endpoints: embedding | llm | rerank | visual -> base_url (+ optional model).
-#
-# Keyed by *model type*, not by machine. Which machine serves each type is an
-# implementation detail; consumers ask for "embedding" or "llm" and get base_url.
-#
-# Sources: MODEL_TYPE_ENDPOINTS_FILE, or this file path from endpoints repo.
-# Tokens: ~/.config/lmstudio-model-keys.toml (model name -> API key); never in this file.
-#
-# Optional: base_urls = ["url1", "url2"] for fallback order; resolver probes and caches first working.
-
 [embedding]
 base_url = "http://localhost:8001/v1"
 model = "jina-embeddings-v5-text-small"
 
 [llm]
-# Primary; optional base_urls = ["url1", "url2"] for fallback order (resolver probes and caches first working)
-base_url = "http://100.83.31.44:8801/v1"
+base_url = "http://localhost:8801/v1"
 model = "gpt-5.2"
 
 [rerank]
-# Example: same or different server
-base_url = "http://localhost:8002/v1"
-# model = "jina-reranker-v3"
+base_url = "http://localhost:8001/v1"
+model = "jina-reranker-v3"
 
 [visual]
 base_url = "http://localhost:8003/v1"
@@ -32,7 +20,6 @@ base_url = "http://100.70.159.64:1234/v1"
 model = "text-embedding-embedding-gemma-300m"
 
 [llm-1]
-# Primary; optional base_urls = ["url1", "url2"] for fallback order (resolver probes and caches first working)
 base_url = "http://100.83.31.44:1234/v1"
 model = "qwen2.5-7b-instruct"
 
